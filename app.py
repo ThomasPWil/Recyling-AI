@@ -11,6 +11,8 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 #testing
+openai.api_key = 'sk-mWJ6YEKmLRYNNq9ElhbopGQawAIRrJnOd95F743DoLT3BlbkFJM1u-URS6JHQ_vsvnTMxfEgdRM97BVrzhsNwDObxtgA'
+app.secret_key = 'supersecretkey'
 
 
 # Home route
