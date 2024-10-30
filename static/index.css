@@ -6,12 +6,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #268000;
 }
 
 /* Main container styling */
 #container {
-    background-color: white;
+    background-color: #7a7a7a;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);

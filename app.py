@@ -11,8 +11,18 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 #testing
-openai.api_key = 'sk-mWJ6YEKmLRYNNq9ElhbopGQawAIRrJnOd95F743DoLT3BlbkFJM1u-URS6JHQ_vsvnTMxfEgdRM97BVrzhsNwDObxtgA'
+
+
+
+openai.api_key = 'sk-UZuZXInrUdjYoDt6XM3ldk9DJwmhLFcjri_L1EglyTT3BlbkFJW_Zae71GQ4YGFG-G1VaMI227palJ_JR5xhjzZl51gA'
 app.secret_key = 'supersecretkey'
+
+topic_info = ""
+try:
+    with open('topic_prompts/RecyclingData.txt', 'r') as file:
+        topic_info = file.read()
+except Exception as e:
+    print(f"Failed to read topic descriptions: {e}")
 
 
 # Home route
@@ -30,7 +40,7 @@ def chat():
     if 'conversation' not in session:
         session['conversation'] = []
 
-    session['conversation'].append({"role": "user", "content": user_message})
+    session['conversation'].append({"roe": "user", "content": user_message})
 
     system_message = f"The user is showing a picture of a {animal_type}. Respond accordingly."
     messages = [{

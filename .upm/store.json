@@ -1,1 +1,1 @@
-{"version":2,"languages":{"python-python3-poetry":{"specfileHash":"d033f0632d1b51ffc5dbc6da97f0228a","lockfileHash":"4b49bbd511f5bee7ad62878fbdae3c9e"}}}
+{"version":2,"languages":{"nodejs-npm":{},"python-python3-poetry":{"specfileHash":"d033f0632d1b51ffc5dbc6da97f0228a","lockfileHash":"4b49bbd511f5bee7ad62878fbdae3c9e","guessedImports":["Flask","Flask-Session","openai"],"guessedImportsHash":"282b507ccea199df81214d65a345e0bd"}}}

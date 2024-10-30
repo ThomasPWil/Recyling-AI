@@ -1,7 +1,7 @@
 // Teachable Machine model URL
 const URL = "https://teachablemachine.withgoogle.com/models/-q6hHNGve/";
 let model, webcam, labelContainer, maxPredictions;
-let currentAnimal = "";
+let currentObject = "";
 
 // Initialize webcam and model
 async function init() {
@@ -25,6 +25,8 @@ async function init() {
     for (let i = 0; i < maxPredictions; i++) {
         labelContainer.appendChild(document.createElement("div"));
     }
+
+    startChat();
 }
 
 // Main prediction loop
@@ -38,38 +40,45 @@ async function loop() {
 async function predict() {
     const prediction = await model.predict(webcam.canvas);
     for (let i = 0; i < maxPredictions; i++) {
-        const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        const classPrediction =
+            prediction[i].className +
+            ": " +
+            prediction[i].probability.toFixed(2);
         labelContainer.childNodes[i].innerHTML = classPrediction;
         if (prediction[i].probability > 0.5) {
-            currentAnimal = prediction[i].className;
+            currentObject = prediction[i].className;
         }
     }
 }
 
+function startChat() {
+    sendAutomaticMessage("Let's start learning sign language!");
+}
+
 // Send message function
-function sendMessage() {
+function sendMessage(message) {
     const userInput = document.getElementById("user-input").value;
     if (userInput.trim() === "") return;
 
-    addMessageToChat(userInput, 'user');
+    addMessageToChat(userInput, "user");
 
-    fetch('/chat', {
-        method: 'POST',
+    fetch("/chat", {
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
             message: userInput,
-            animalType: currentAnimal
+            animalType: currentObject,
         }),
     })
-    .then(response => response.json())
-    .then(data => {
-        addMessageToChat(data.response, 'bot');
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+        .then((response) => response.json())
+        .then((data) => {
+            addMessageToChat(data.response, "bot");
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
 
     document.getElementById("user-input").value = "";
 }
@@ -85,8 +94,10 @@ function addMessageToChat(message, sender) {
 }
 
 // Event listener for Enter key
-document.getElementById("user-input").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        sendMessage();
-    }
-});
+document
+    .getElementById("user-input")
+    .addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
