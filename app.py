@@ -14,7 +14,7 @@ Session(app)
 
 
 
-openai.api_key = 'sk-UZuZXInrUdjYoDt6XM3ldk9DJwmhLFcjri_L1EglyTT3BlbkFJW_Zae71GQ4YGFG-G1VaMI227palJ_JR5xhjzZl51gA'
+
 app.secret_key = 'supersecretkey'
 
 topic_info = ""
